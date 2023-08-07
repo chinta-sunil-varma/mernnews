@@ -1,5 +1,5 @@
 {
-  "proxy":"http://localhost:8080/api/v1",
+  "proxy":"http://localhost:8080",
   "name": "client",
   "version": "0.1.0",
   "private": true,
@@ -30,7 +30,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build ",
+    "postbuild": "mv build ../server/",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

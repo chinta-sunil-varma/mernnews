@@ -16,26 +16,24 @@ app.use(cors())
 dotenv.config()
 
 
-app.use(express.static(path.join(__dirname,"./client/build")));
-
-app.get("*",function(req, res)  {
-  res.sendFile(path.join(__dirname,"./client/build/index.html"))}) ;
+app.use(express.static(path.join(__dirname,"/build")));
 
 
-// basic route or home route
-app.get('/',(req,res)=>{
-    res.send("Hello there i am index.js of server side")
-  })
+
 
 app.use('/api/v1/posts',postRoutes)
 app.use('/api/v1/user',userRoutes)
 
+app.get("*",function(req, res)  {
+  res.sendFile(path.join(__dirname,"/build/index.html"))}) ;
+
+
 const PORT = process.env.PORT || 8080
 app.listen(PORT,()=>{
-    console.log("Running server");
+    console.log("Running server ");
 })
 
-mongoose.connect(process.env.CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGO, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(console.log("db connected"))
     .catch((error)=>console.log(error))
 

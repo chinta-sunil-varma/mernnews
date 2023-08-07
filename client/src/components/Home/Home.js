@@ -10,10 +10,14 @@ const Home = () => {
   const classes = useStyles();
 
   const posts = useSelector((state) => state.data.posts);
+  console.log("posts"+typeof(posts))
 
   const politics = posts.filter((itr) => (itr.dept === "Politics"))
   const bussiness = posts.filter((itr) => (itr.dept === "Bussiness"))
   const sports = posts.filter((itr) => (itr.dept === "Sports"))
+
+  
+  
 
   return (
     <Grow in>
